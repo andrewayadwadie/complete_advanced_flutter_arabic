@@ -1,9 +1,9 @@
-import 'package:advanced_flutter_arabic/presentation/resources/assets_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/color_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/font_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/strings_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/styles_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/values_manager.dart';
+import '../../resources/assets_manager.dart';
+import '../../resources/color_manager.dart';
+import '../../resources/font_manager.dart';
+import '../../resources/strings_manager.dart';
+import '../../resources/styles_manager.dart';
+import '../../resources/values_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -21,6 +21,7 @@ enum StateRendererType {
   contentState
 }
 
+// ignore: must_be_immutable
 class StateRenderer extends StatelessWidget {
   StateRendererType stateRendererType;
   String message;
@@ -28,7 +29,8 @@ class StateRenderer extends StatelessWidget {
   Function retryActionFunction;
 
   StateRenderer(
-      {required this.stateRendererType,
+      {super.key,
+      required this.stateRendererType,
       this.message = AppStrings.loading,
       this.title = "",
       required this.retryActionFunction});

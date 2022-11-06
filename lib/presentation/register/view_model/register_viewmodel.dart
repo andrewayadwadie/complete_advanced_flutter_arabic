@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:advanced_flutter_arabic/domain/usecase/register_usecase.dart';
-import 'package:advanced_flutter_arabic/presentation/base/baseviewmodel.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/strings_manager.dart';
+import '../../../domain/usecase/register_usecase.dart';
+import '../../base/baseviewmodel.dart';
+import '../../resources/strings_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import '../../../app/functions.dart';
@@ -26,7 +26,7 @@ class RegisterViewModel extends BaseViewModel
       StreamController<void>.broadcast();
 
   StreamController isUserRegisteredInSuccessfullyStreamController =
-  StreamController<bool>();
+      StreamController<bool>();
   final RegisterUseCase _registerUseCase;
   var registerObject = RegisterObject("", "", "", "", "", "");
 
@@ -90,7 +90,7 @@ class RegisterViewModel extends BaseViewModel
       // content
       inputState.add(ContentState());
       // navigate to main screen
-       isUserRegisteredInSuccessfullyStreamController.add(true);
+      isUserRegisteredInSuccessfullyStreamController.add(true);
     });
   }
 
@@ -187,8 +187,8 @@ class RegisterViewModel extends BaseViewModel
       emailStreamController.stream.map((email) => isEmailValid(email));
 
   @override
-  Stream<String?> get outputErrorEmail => outputIsEmailValid
-      .map((isEmailValid) => isEmailValid ? null : AppStrings.invalidEmail.tr());
+  Stream<String?> get outputErrorEmail => outputIsEmailValid.map(
+      (isEmailValid) => isEmailValid ? null : AppStrings.invalidEmail.tr());
 
   @override
   Stream<bool> get outputIsMobileNumberValid =>
@@ -205,8 +205,9 @@ class RegisterViewModel extends BaseViewModel
       .map((password) => _isPasswordValid(password));
 
   @override
-  Stream<String?> get outputErrorPassword => outputIsPasswordValid.map(
-      (isPasswordValid) => isPasswordValid ? null : AppStrings.passwordInvalid.tr());
+  Stream<String?> get outputErrorPassword =>
+      outputIsPasswordValid.map((isPasswordValid) =>
+          isPasswordValid ? null : AppStrings.passwordInvalid.tr());
 
   @override
   Stream<File> get outputProfilePicture =>

@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:advanced_flutter_arabic/presentation/base/baseviewmodel.dart';
-import 'package:advanced_flutter_arabic/presentation/common/state_renderer/state_renderer.dart';
-import 'package:advanced_flutter_arabic/presentation/common/state_renderer/state_renderer_impl.dart';
+import '../../base/baseviewmodel.dart';
+import '../../common/state_renderer/state_renderer.dart';
+import '../../common/state_renderer/state_renderer_impl.dart';
 
 import '../../../domain/usecase/login_usecase.dart';
 import '../../common/freezed_data_classes.dart';

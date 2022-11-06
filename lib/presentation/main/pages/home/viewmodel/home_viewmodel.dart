@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:ffi';
 
-import 'package:advanced_flutter_arabic/domain/model/models.dart';
-import 'package:advanced_flutter_arabic/domain/usecase/home_usecase.dart';
-import 'package:advanced_flutter_arabic/presentation/base/baseviewmodel.dart';
+import '../../../../../domain/model/models.dart';
+import '../../../../../domain/usecase/home_usecase.dart';
+import '../../../../base/baseviewmodel.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../../../common/state_renderer/state_renderer.dart';
@@ -26,6 +26,7 @@ class HomeViewModel extends BaseViewModel
   _getHomeData() async {
     inputState.add(LoadingState(
         stateRendererType: StateRendererType.fullScreenLoadingState));
+    // ignore: void_checks
     (await _homeUseCase.execute(Void)).fold(
         (failure) => {
               // left -> failure

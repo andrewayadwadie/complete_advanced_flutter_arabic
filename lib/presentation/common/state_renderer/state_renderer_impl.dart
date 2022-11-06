@@ -1,5 +1,5 @@
-import 'package:advanced_flutter_arabic/app/constants.dart';
-import 'package:advanced_flutter_arabic/presentation/common/state_renderer/state_renderer.dart';
+import '../../../app/constants.dart';
+import 'state_renderer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -158,7 +158,7 @@ extension FlowStateExtension on FlowState {
   showPopup(
       BuildContext context, StateRendererType stateRendererType, String message,
       {String title = Constants.empty}) {
-    WidgetsBinding.instance?.addPostFrameCallback((_) => showDialog(
+    WidgetsBinding.instance.addPostFrameCallback((_) => showDialog(
         context: context,
         builder: (BuildContext context) => StateRenderer(
             stateRendererType: stateRendererType,

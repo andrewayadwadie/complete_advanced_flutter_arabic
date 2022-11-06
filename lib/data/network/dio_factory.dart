@@ -1,14 +1,14 @@
-import 'package:advanced_flutter_arabic/app/app_prefs.dart';
-import 'package:advanced_flutter_arabic/app/constants.dart';
+import '../../app/app_prefs.dart';
+import '../../app/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-const String APPLICATION_JSON = "application/json";
-const String CONTENT_TYPE = "content-type";
-const String ACCEPT = "accept";
-const String AUTHORIZATION = "authorization";
-const String DEFAULT_LANGUAGE = "language";
+const String applicationJson = "application/json";
+const String contentType = "content-type";
+const String accept = "accept";
+const String authorization = "authorization";
+const String deafultLanguage = "language";
 
 class DioFactory {
   final AppPreferences _appPreferences;
@@ -20,10 +20,10 @@ class DioFactory {
 
     String language = await _appPreferences.getAppLanguage();
     Map<String, String> headers = {
-      CONTENT_TYPE: APPLICATION_JSON,
-      ACCEPT: APPLICATION_JSON,
-      AUTHORIZATION: Constants.token,
-      DEFAULT_LANGUAGE: language
+      contentType: applicationJson,
+      accept: applicationJson,
+      authorization: Constants.token,
+      deafultLanguage: language
     };
 
     dio.options = BaseOptions(

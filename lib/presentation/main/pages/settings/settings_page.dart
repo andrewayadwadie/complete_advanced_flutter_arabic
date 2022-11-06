@@ -1,10 +1,10 @@
-import 'package:advanced_flutter_arabic/app/app_prefs.dart';
-import 'package:advanced_flutter_arabic/data/data_source/local_data_source.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/assets_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/langauge_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/routes_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/strings_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/values_manager.dart';
+import '../../../../app/app_prefs.dart';
+import '../../../../data/data_source/local_data_source.dart';
+import '../../../resources/assets_manager.dart';
+import '../../../resources/langauge_manager.dart';
+import '../../../resources/routes_manager.dart';
+import '../../../resources/strings_manager.dart';
+import '../../../resources/values_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
@@ -87,7 +87,7 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   bool isRtl() {
-    return context.locale == ARABIC_LOCAL;
+    return context.locale == arabicLocal;
   }
 
   _changeLanguage() {

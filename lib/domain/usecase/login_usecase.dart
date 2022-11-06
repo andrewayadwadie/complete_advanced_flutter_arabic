@@ -1,7 +1,7 @@
-import 'package:advanced_flutter_arabic/data/network/failure.dart';
-import 'package:advanced_flutter_arabic/data/network/requests.dart';
-import 'package:advanced_flutter_arabic/domain/model/models.dart';
-import 'package:advanced_flutter_arabic/domain/usecase/base_usecase.dart';
+import '../../data/network/failure.dart';
+import '../../data/network/requests.dart';
+import '../model/models.dart';
+import 'base_usecase.dart';
 import 'package:dartz/dartz.dart';
 
 import '../repository/repository.dart';

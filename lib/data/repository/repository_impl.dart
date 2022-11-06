@@ -1,13 +1,13 @@
-import 'package:advanced_flutter_arabic/data/data_source/local_data_source.dart';
-import 'package:advanced_flutter_arabic/data/data_source/remote_data_source.dart';
-import 'package:advanced_flutter_arabic/data/mapper/mapper.dart';
-import 'package:advanced_flutter_arabic/data/network/error_handler.dart';
-import 'package:advanced_flutter_arabic/data/network/failure.dart';
-import 'package:advanced_flutter_arabic/data/network/network_info.dart';
+import '../data_source/local_data_source.dart';
+import '../data_source/remote_data_source.dart';
+import '../mapper/mapper.dart';
+import '../network/error_handler.dart';
+import '../network/failure.dart';
+import '../network/network_info.dart';
 
-import 'package:advanced_flutter_arabic/data/network/requests.dart';
+import '../network/requests.dart';
 
-import 'package:advanced_flutter_arabic/domain/model/models.dart';
+import '../../domain/model/models.dart';
 
 import 'package:dartz/dartz.dart';
 
@@ -18,8 +18,8 @@ class RepositoryImpl implements Repository {
   final LocalDataSource _localDataSource;
   final NetworkInfo _networkInfo;
 
-  RepositoryImpl(this._remoteDataSource, this._networkInfo,
-      this._localDataSource);
+  RepositoryImpl(
+      this._remoteDataSource, this._networkInfo, this._localDataSource);
 
   @override
   Future<Either<Failure, Authentication>> login(
@@ -29,7 +29,7 @@ class RepositoryImpl implements Repository {
       try {
         final response = await _remoteDataSource.login(loginRequest);
 
-        if (response.status == ApiInternalStatus.SUCCESS) {
+        if (response.status == ApiInternalStatus.success) {
           // success
           // return either right
           // return data
@@ -37,18 +37,16 @@ class RepositoryImpl implements Repository {
         } else {
           // failure --return business error
           // return either left
-          return Left(Failure(ApiInternalStatus.FAILURE,
-              response.message ?? ResponseMessage.DEFAULT));
+          return Left(Failure(ApiInternalStatus.failure,
+              response.message ?? ResponseMessage.defaultError));
         }
       } catch (error) {
-        return Left(ErrorHandler
-            .handle(error)
-            .failure);
+        return Left(ErrorHandler.handle(error).failure);
       }
     } else {
       // return internet connection error
       // return either left
-      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+      return Left(DataSource.noInternetConnection.getFailure());
     }
   }
 
@@ -59,25 +57,23 @@ class RepositoryImpl implements Repository {
         // its safe to call API
         final response = await _remoteDataSource.forgotPassword(email);
 
-        if (response.status == ApiInternalStatus.SUCCESS) {
+        if (response.status == ApiInternalStatus.success) {
           // success
           // return right
           return Right(response.toDomain());
         } else {
           // failure
           // return left
-          return Left(Failure(response.status ?? ResponseCode.DEFAULT,
-              response.message ?? ResponseMessage.DEFAULT));
+          return Left(Failure(response.status ?? ResponseCode.defaultError,
+              response.message ?? ResponseMessage.defaultError));
         }
       } catch (error) {
-        return Left(ErrorHandler
-            .handle(error)
-            .failure);
+        return Left(ErrorHandler.handle(error).failure);
       }
     } else {
       // return network connection error
       // return left
-      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+      return Left(DataSource.noInternetConnection.getFailure());
     }
   }
 
@@ -89,7 +85,7 @@ class RepositoryImpl implements Repository {
       try {
         final response = await _remoteDataSource.register(registerRequest);
 
-        if (response.status == ApiInternalStatus.SUCCESS) {
+        if (response.status == ApiInternalStatus.success) {
           // success
           // return either right
           // return data
@@ -97,18 +93,16 @@ class RepositoryImpl implements Repository {
         } else {
           // failure --return business error
           // return either left
-          return Left(Failure(ApiInternalStatus.FAILURE,
-              response.message ?? ResponseMessage.DEFAULT));
+          return Left(Failure(ApiInternalStatus.failure,
+              response.message ?? ResponseMessage.defaultError));
         }
       } catch (error) {
-        return Left(ErrorHandler
-            .handle(error)
-            .failure);
+        return Left(ErrorHandler.handle(error).failure);
       }
     } else {
       // return internet connection error
       // return either left
-      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+      return Left(DataSource.noInternetConnection.getFailure());
     }
   }
 
@@ -127,7 +121,7 @@ class RepositoryImpl implements Repository {
         try {
           final response = await _remoteDataSource.getHomeData();
 
-          if (response.status == ApiInternalStatus.SUCCESS) {
+          if (response.status == ApiInternalStatus.success) {
             // success
             // return either right
             // return data
@@ -140,18 +134,16 @@ class RepositoryImpl implements Repository {
           } else {
             // failure --return business error
             // return either left
-            return Left(Failure(ApiInternalStatus.FAILURE,
-                response.message ?? ResponseMessage.DEFAULT));
+            return Left(Failure(ApiInternalStatus.failure,
+                response.message ?? ResponseMessage.defaultError));
           }
         } catch (error) {
-          return Left(ErrorHandler
-              .handle(error)
-              .failure);
+          return Left(ErrorHandler.handle(error).failure);
         }
       } else {
         // return internet connection error
         // return either left
-        return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+        return Left(DataSource.noInternetConnection.getFailure());
       }
     }
   }
@@ -167,18 +159,18 @@ class RepositoryImpl implements Repository {
       if (await _networkInfo.isConnected) {
         try {
           final response = await _remoteDataSource.getStoreDetails();
-          if (response.status == ApiInternalStatus.SUCCESS) {
+          if (response.status == ApiInternalStatus.success) {
             _localDataSource.saveStoreDetailsToCache(response);
             return Right(response.toDomain());
           } else {
-            return Left(Failure(response.status ?? ResponseCode.DEFAULT,
-                response.message ?? ResponseMessage.DEFAULT));
+            return Left(Failure(response.status ?? ResponseCode.defaultError,
+                response.message ?? ResponseMessage.defaultError));
           }
         } catch (error) {
           return Left(ErrorHandler.handle(error).failure);
         }
       } else {
-        return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+        return Left(DataSource.noInternetConnection.getFailure());
       }
     }
   }

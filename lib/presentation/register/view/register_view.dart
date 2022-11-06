@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:advanced_flutter_arabic/app/app_prefs.dart';
-import 'package:advanced_flutter_arabic/app/constants.dart';
-import 'package:advanced_flutter_arabic/presentation/common/state_renderer/state_renderer_impl.dart';
-import 'package:advanced_flutter_arabic/presentation/register/view_model/register_viewmodel.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/color_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/values_manager.dart';
+import '../../../app/app_prefs.dart';
+import '../../../app/constants.dart';
+import '../../common/state_renderer/state_renderer_impl.dart';
+import '../view_model/register_viewmodel.dart';
+import '../../resources/color_manager.dart';
+import '../../resources/values_manager.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +59,7 @@ class _RegisterViewState extends State<RegisterView> {
         .listen((isLoggedIn) {
       if (isLoggedIn) {
         // navigate to main screen
-        SchedulerBinding.instance?.addPostFrameCallback((_) {
+        SchedulerBinding.instance.addPostFrameCallback((_) {
           _appPreferences.setUserLoggedIn();
           Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
         });

@@ -1,4 +1,4 @@
-import 'package:advanced_flutter_arabic/data/response/responses.dart';
+import '../response/responses.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 

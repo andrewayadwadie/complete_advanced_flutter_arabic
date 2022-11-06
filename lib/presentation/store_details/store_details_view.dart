@@ -1,7 +1,7 @@
-import 'package:advanced_flutter_arabic/domain/model/models.dart';
-import 'package:advanced_flutter_arabic/presentation/store_details/store_details_viewmodel.dart';
+import '../../domain/model/models.dart';
+import 'store_details_viewmodel.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../app/di.dart';
@@ -61,7 +61,7 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
           centerTitle: true,
         ),
         body: Container(
-          constraints: BoxConstraints.expand(),
+          constraints: const BoxConstraints.expand(),
           color: ColorManager.white,
           child: SingleChildScrollView(
             child: StreamBuilder<StoreDetails>(

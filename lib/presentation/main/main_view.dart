@@ -1,10 +1,10 @@
-import 'package:advanced_flutter_arabic/presentation/main/pages/home/view/home_page.dart';
-import 'package:advanced_flutter_arabic/presentation/main/pages/notifications/notifications_page.dart';
-import 'package:advanced_flutter_arabic/presentation/main/pages/search/search_page.dart';
-import 'package:advanced_flutter_arabic/presentation/main/pages/settings/settings_page.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/color_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/strings_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/values_manager.dart';
+import 'pages/home/view/home_page.dart';
+import 'pages/notifications/notifications_page.dart';
+import 'pages/search/search_page.dart';
+import 'pages/settings/settings_page.dart';
+import '../resources/color_manager.dart';
+import '../resources/strings_manager.dart';
+import '../resources/values_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -17,10 +17,10 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   List<Widget> pages = [
-    HomePage(),
-    SearchPage(),
-    NotificationsPage(),
-    SettingsPage()
+    const HomePage(),
+    const SearchPage(),
+    const NotificationsPage(),
+    const SettingsPage()
   ];
   List<String> titles = [
     AppStrings.home.tr(),
@@ -48,16 +48,18 @@ class _MainViewState extends State<MainView> {
           unselectedItemColor: ColorManager.grey,
           currentIndex: _currentIndex,
           onTap: onTap,
-          items:   [
+          items: [
             BottomNavigationBarItem(
-                icon: const Icon(Icons.home_outlined), label: AppStrings.home.tr()),
+                icon: const Icon(Icons.home_outlined),
+                label: AppStrings.home.tr()),
             BottomNavigationBarItem(
                 icon: const Icon(Icons.search), label: AppStrings.search.tr()),
             BottomNavigationBarItem(
                 icon: const Icon(Icons.notifications),
                 label: AppStrings.notifications.tr()),
             BottomNavigationBarItem(
-                icon: const Icon(Icons.settings), label: AppStrings.settings.tr()),
+                icon: const Icon(Icons.settings),
+                label: AppStrings.settings.tr()),
           ],
         ),
       ),

@@ -1,10 +1,10 @@
-import 'package:advanced_flutter_arabic/domain/model/models.dart';
-import 'package:advanced_flutter_arabic/presentation/common/state_renderer/state_renderer_impl.dart';
-import 'package:advanced_flutter_arabic/presentation/main/pages/home/viewmodel/home_viewmodel.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/color_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/routes_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/strings_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/values_manager.dart';
+import '../../../../../domain/model/models.dart';
+import '../../../../common/state_renderer/state_renderer_impl.dart';
+import '../viewmodel/home_viewmodel.dart';
+import '../../../../resources/color_manager.dart';
+import '../../../../resources/routes_manager.dart';
+import '../../../../resources/strings_manager.dart';
+import '../../../../resources/values_manager.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +62,6 @@ class _HomePageState extends State<HomePage> {
               _getStoresWidget(snapshot.data?.stores),
             ],
           );
-          ;
         });
   }
 

@@ -1,13 +1,10 @@
-import 'package:advanced_flutter_arabic/app/app_prefs.dart';
-import 'package:advanced_flutter_arabic/data/data_source/remote_data_source.dart';
-import 'package:advanced_flutter_arabic/data/repository/repository_impl.dart';
-import 'package:advanced_flutter_arabic/domain/repository/repository.dart';
-import 'package:advanced_flutter_arabic/domain/usecase/login_usecase.dart';
-import 'package:advanced_flutter_arabic/presentation/common/state_renderer/state_renderer_impl.dart';
-import 'package:advanced_flutter_arabic/presentation/login/viewmodel/login_viewmodel.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/color_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/strings_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/values_manager.dart';
+import '../../../app/app_prefs.dart';
+
+import '../../common/state_renderer/state_renderer_impl.dart';
+import '../viewmodel/login_viewmodel.dart';
+import '../../resources/color_manager.dart';
+import '../../resources/strings_manager.dart';
+import '../../resources/values_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -42,7 +39,7 @@ class _LoginViewState extends State<LoginView> {
         .listen((isLoggedIn) {
       if (isLoggedIn) {
         // navigate to main screen
-        SchedulerBinding.instance?.addPostFrameCallback((_) {
+        SchedulerBinding.instance.addPostFrameCallback((_) {
           _appPreferences.setUserLoggedIn();
           Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
         });
@@ -168,7 +165,9 @@ class _LoginViewState extends State<LoginView> {
                             Navigator.pushNamed(context, Routes.registerRoute);
                           },
                           child: Text(AppStrings.registerText,
-                              style: Theme.of(context).textTheme.titleMedium).tr(),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium)
+                              .tr(),
                         )
                       ],
                     )),

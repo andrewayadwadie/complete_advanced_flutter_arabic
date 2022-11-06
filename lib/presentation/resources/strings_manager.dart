@@ -25,8 +25,7 @@ class AppStrings {
   static const String resetPassword = "reset_password";
   static const String success = "success";
   static const String userNameInvalid = "username_hint_message";
-  static const String mobileNumberInvalid =
-      "mobile_number_hint_message";
+  static const String mobileNumberInvalid = "mobile_number_hint_message";
   static const String passwordInvalid = "password_hint_message";
   static const String alreadyHaveAccount = "already_have_account";
   static const register = "register";

@@ -1,11 +1,12 @@
-import 'package:advanced_flutter_arabic/app/app_prefs.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/theme_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../presentation/resources/routes_manager.dart';
+import '../presentation/resources/theme_manager.dart';
+import 'app_prefs.dart';
 import 'di.dart';
-import 'package:easy_localization/easy_localization.dart';
 
+// ignore: must_be_immutable
 class MyApp extends StatefulWidget {
   // named constructor
   MyApp._internal();

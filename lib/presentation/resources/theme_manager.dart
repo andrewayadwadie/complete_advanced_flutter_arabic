@@ -1,7 +1,7 @@
-import 'package:advanced_flutter_arabic/presentation/resources/color_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/font_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/styles_manager.dart';
-import 'package:advanced_flutter_arabic/presentation/resources/values_manager.dart';
+import 'color_manager.dart';
+import 'font_manager.dart';
+import 'styles_manager.dart';
+import 'values_manager.dart';
 import 'package:flutter/material.dart';
 
 ThemeData getApplicationTheme() {
@@ -38,7 +38,7 @@ ThemeData getApplicationTheme() {
         style: ElevatedButton.styleFrom(
             textStyle: getRegularStyle(
                 color: ColorManager.white, fontSize: FontSize.s17),
-            primary: ColorManager.primary,
+            backgroundColor: ColorManager.primary,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppSize.s12)))),
 
@@ -55,7 +55,8 @@ ThemeData getApplicationTheme() {
             getRegularStyle(color: ColorManager.white, fontSize: FontSize.s16),
         bodyLarge: getRegularStyle(color: ColorManager.grey1),
         bodySmall: getRegularStyle(color: ColorManager.grey),
-        bodyMedium: getRegularStyle(color: ColorManager.grey2, fontSize: FontSize.s12),
+        bodyMedium:
+            getRegularStyle(color: ColorManager.grey2, fontSize: FontSize.s12),
         labelSmall:
             getBoldStyle(color: ColorManager.primary, fontSize: FontSize.s12)),
 

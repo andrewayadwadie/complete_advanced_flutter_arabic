@@ -1,16 +1,15 @@
 import 'dart:async';
 import 'dart:ffi';
 
-import 'package:advanced_flutter_arabic/domain/model/models.dart';
-import 'package:advanced_flutter_arabic/domain/usecase/home_usecase.dart';
-import 'package:advanced_flutter_arabic/presentation/base/baseviewmodel.dart';
+import '../../domain/model/models.dart';
+import '../base/baseviewmodel.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../domain/usecase/store_details_usecase.dart';
 import '../common/state_renderer/state_renderer.dart';
 import '../common/state_renderer/state_renderer_impl.dart';
 
-  class StoreDetailsViewModel extends BaseViewModel
+class StoreDetailsViewModel extends BaseViewModel
     with StoreDetailsViewModelInput, StoreDetailsViewModelOutput {
   final _storeDetailsStreamController = BehaviorSubject<StoreDetails>();
 
@@ -26,12 +25,13 @@ import '../common/state_renderer/state_renderer_impl.dart';
   _loadData() async {
     inputState.add(LoadingState(
         stateRendererType: StateRendererType.fullScreenLoadingState));
+    // ignore: void_checks
     (await storeDetailsUseCase.execute(Void)).fold(
-          (failure) {
+      (failure) {
         inputState.add(ErrorState(
             StateRendererType.fullScreenErrorState, failure.message));
       },
-          (storeDetails) async {
+      (storeDetails) async {
         inputState.add(ContentState());
         inputStoreDetails.add(storeDetails);
       },

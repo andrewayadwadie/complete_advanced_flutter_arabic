@@ -1,11 +1,11 @@
-import 'package:advanced_flutter_arabic/data/network/error_handler.dart';
+import '../network/error_handler.dart';
 
 import '../response/responses.dart';
 
-const CACHE_HOME_KEY = "CACHE_HOME_KEY";
-const CACHE_HOME_INTERVAL = 60 * 1000; // 1 minute cache in millis
-const CACHE_STORE_DETAILS_KEY = "CACHE_STORE_DETAILS_KEY";
-const CACHE_STORE_DETAILS_INTERVAL = 60 * 1000; // 30s in millis
+const cacheHomeKey = "CACHE_HOME_KEY";
+const cacheHomeInterval = 60 * 1000; // 1 minute cache in millis
+const cacheStoreDetailsKey = "CACHE_STORE_DETAILS_KEY";
+const cacheStoreDetailsInterval = 60 * 1000; // 30s in millis
 
 abstract class LocalDataSource {
   Future<HomeResponse> getHomeData();
@@ -23,41 +23,40 @@ abstract class LocalDataSource {
 
 class LocalDataSourceImpl implements LocalDataSource {
   // run time cache
-  Map<String, CachedItem> cacheMap = Map();
+  Map<String, CachedItem> cacheMap = {};
 
   @override
   Future<HomeResponse> getHomeData() async {
-    CachedItem? cachedItem = cacheMap[CACHE_HOME_KEY];
+    CachedItem? cachedItem = cacheMap[cacheHomeKey];
 
-    if (cachedItem != null && cachedItem.isValid(CACHE_HOME_INTERVAL)) {
+    if (cachedItem != null && cachedItem.isValid(cacheHomeInterval)) {
       // return the response from cache
       return cachedItem.data;
     } else {
       // return an error that cache is not there or its not valid
-      throw ErrorHandler.handle(DataSource.CACHE_ERROR);
+      throw ErrorHandler.handle(DataSource.cacheError);
     }
   }
 
   @override
   Future<void> saveHomeToCache(HomeResponse homeResponse) async {
-    cacheMap[CACHE_HOME_KEY] = CachedItem(homeResponse);
+    cacheMap[cacheHomeKey] = CachedItem(homeResponse);
   }
 
   @override
   Future<StoreDetailsResponse> getStoreDetails() async {
-    CachedItem? cachedItem = cacheMap[CACHE_STORE_DETAILS_KEY];
+    CachedItem? cachedItem = cacheMap[cacheStoreDetailsKey];
 
-    if (cachedItem != null &&
-        cachedItem.isValid(CACHE_STORE_DETAILS_INTERVAL)) {
+    if (cachedItem != null && cachedItem.isValid(cacheStoreDetailsInterval)) {
       return cachedItem.data;
     } else {
-      throw ErrorHandler.handle(DataSource.CACHE_ERROR);
+      throw ErrorHandler.handle(DataSource.cacheError);
     }
   }
 
   @override
   Future<void> saveStoreDetailsToCache(StoreDetailsResponse response) async {
-    cacheMap[CACHE_STORE_DETAILS_KEY] = CachedItem(response);
+    cacheMap[cacheStoreDetailsKey] = CachedItem(response);
   }
 
   @override
